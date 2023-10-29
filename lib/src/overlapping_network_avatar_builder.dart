@@ -15,61 +15,88 @@ class OverLappingNetworkAvatarBuilder extends StatelessWidget {
     this.circularAvatarSize,
     this.distanceInEachAvatar = 40,
   });
+
+  /// The list of network images to display as avatars.
   final List<String> listOfNetworkImages;
-  final EdgeInsetsGeometry? padding;
+
+  /// The maximum number of avatars to display.
   final int limitAvatars;
+
+  /// The padding around the avatars.
+  final EdgeInsetsGeometry? padding;
+
+  /// The alignment of the avatars within the parent container.
   final AlignmentGeometry alignment;
+
+  /// The background color of the circular avatars.
   final Color? circularAvatarColor;
+
+  /// The text color for the total members hint.
   final Color? totalMembersHintTextColor;
+
+  /// The font size for the total members hint.
   final double? totalMembersHintTextSize;
+
+  /// Determines if the total members hint should be visible.
   final bool isTotalMemberVisible;
+
+  /// The size of the circular avatars.
   final double? circularAvatarSize;
+
+  /// The distance between each avatar.
   final double distanceInEachAvatar;
+
   @override
   Widget build(BuildContext context) {
     List<Widget> items = List.generate(
-        listOfNetworkImages.length <= limitAvatars
-            ? listOfNetworkImages.length
-            : limitAvatars, (index) {
-      return Padding(
-        padding: EdgeInsets.only(
-          left: index * distanceInEachAvatar,
-        ),
-        child: CircleAvatar(
-          backgroundColor: circularAvatarColor ?? Colors.blue,
-          backgroundImage: NetworkImage(listOfNetworkImages[index]),
-          radius: circularAvatarSize ?? 30,
-        ),
-      );
-    });
-    //**Main */
+      listOfNetworkImages.length <= limitAvatars
+          ? listOfNetworkImages.length
+          : limitAvatars,
+      (index) {
+        return Padding(
+          padding: EdgeInsets.only(
+            left: index * distanceInEachAvatar,
+          ),
+          child: CircleAvatar(
+            backgroundColor: circularAvatarColor ?? Colors.blue,
+            backgroundImage: NetworkImage(listOfNetworkImages[index]),
+            radius: circularAvatarSize ?? 30,
+          ),
+        );
+      },
+    );
+
+    // Main widget
     return Padding(
       padding: padding ?? EdgeInsets.zero,
       child: Align(
         alignment: alignment,
         child: Stack(
-            children: items +
-                <Widget>[
-                  Visibility(
-                    visible: isTotalMemberVisible &&
-                        listOfNetworkImages.length - limitAvatars != 0,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        left: limitAvatars * distanceInEachAvatar,
-                      ),
-                      child: CircleAvatar(
-                        backgroundColor: circularAvatarColor ?? Colors.blue,
-                        radius: circularAvatarSize ?? 30,
-                        child: Text(
-                          "+${numberToString(listOfNetworkImages.length - limitAvatars)} ",
-                          style: TextStyle(
-                              color: totalMembersHintTextColor,
-                              fontSize: totalMembersHintTextSize),
+          children: items +
+              <Widget>[
+                Visibility(
+                  visible:
+                      isTotalMemberVisible && listOfNetworkImages.length - limitAvatars != 0,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: limitAvatars * distanceInEachAvatar,
+                    ),
+                    child: CircleAvatar(
+                      backgroundColor: circularAvatarColor ?? Colors.blue,
+                      radius: circularAvatarSize ?? 30,
+                      
+                      child: Text(
+                        "+${numberToString(listOfNetworkImages.length - limitAvatars)} ",
+                        style: TextStyle(
+                          color: totalMembersHintTextColor,
+                          fontSize: totalMembersHintTextSize,
                         ),
                       ),
                     ),
-                  )
-                ]),
+                  ),
+                ),
+              ],
+        ),
       ),
     );
   }

@@ -3,6 +3,7 @@
 export "FLUTTER_ROOT=/Users/mashoodhussain/FlutterDev/flutter"
 export "FLUTTER_APPLICATION_PATH=/Users/mashoodhussain/Flutter Project/overlapping_avatar"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
+export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.2"
 export "FLUTTER_BUILD_NUMBER=1.0.2"

@@ -1,10 +1,10 @@
 name: overlapping_avatar
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: library that provides a customizable avatar component for displaying profile pictures with an overlapping effect.
+version: 1.0.2
+homepage: https://github.com/mashood100/Overlapping_avatar
 
 environment:
-  sdk: '>=3.0.2 <4.0.0'
+  sdk: '>=2.17.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
