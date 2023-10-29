@@ -1,6 +1,6 @@
 name: overlapping_avatar
 description: library that provides a customizable avatar component for displaying profile pictures with an overlapping effect.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/mashood100/Overlapping_avatar
 
 environment:
